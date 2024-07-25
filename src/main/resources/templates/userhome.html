@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="
+                default-src 'self';
+                
+                worker-src blob:;
+                
+                frame-src 'self' http://localhost:3651/;
+                
+                script-src 'sha256-TSgFIg0NrV/5hAAL5uVlSFxYe3H8mYH5y9zLUU0XWDE='
+                            'sha256-2yzoRRA5gLbonik6VP+pEyETTUcV5KoEYe7zicurhu8='
+                            https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.min.js
+                            https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/maptilersdk.umd.js
+                            https://localhost:8443/*; 
+                
+                img-src https://* data:;
+                
+                style-src 'unsafe-hashes' 'sha256-ZGPS1ET52tsGUS2a2+hVIFGKWlKgjVcYIwnLoAlWDfk='
+                            'unsafe-hashes' 'sha256-6CEBDUMBZ8KNX6Ify/Ijz4kCgXypvY62a2It58NvNuU='
+                            https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css
+                            https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css
+                            https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/style.css;
+
+                connect-src https://*;
+                "
+    />
+    <title>MaaS4You</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.min.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css" rel="stylesheet" />
+
+    <script src="https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/maptilersdk.umd.js"></script>
+  <link href="https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/style.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .mapstyles-select {
+      position: relative;
+      top: 5px;
+      left: 5px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+
+<body class="bg-secondary text-white">
+    
+    <div th:replace="template :: navbar">...</div>
+    <br>
+    <h2 class="text-center">Benvenuto alla Homepage!</h2>
+    <hr>
+    <div class="container my-2">
+
+        <!-- lista spese link -->
+        <a th:href="@{/listaViaggi}" class="btn btn-info btn-lg btn-block">I miei viaggi</a>
+        <br>
+        <!-- sezione admin link -->
+        <a th:href="@{/adminhome}" class="btn btn-warning btn-lg btn-block">Amministrativo</a>
+        <br>
+    </div>
+   
+    <div id="map"
+        style="width:600px; height:450px; margin:0 auto;">
+    </div>
+    <div class="text-center">
+        <select class="mapstyles-select">
+            <optgroup label="Navigation and city exploration">
+            <option value="STREETS">STREETS</option>
+            <option value="STREETS.DARK" selected>STREETS.DARK</option>
+            <option value="STREETS.LIGHT">STREETS.LIGHT</option>
+            <option value="STREETS.PASTEL">STREETS.PASTEL</option>
+            </optgroup>
+            <option value="OUTDOOR">OUTDOOR</option>
+            <option value="WINTER">WINTER</option>
+            <option value="SATELLITE">SATELLITE</option>
+            <option value="HYBRID">HYBRID</option>
+        </select>
+    </div>
+    
+    <script>
+        maptilersdk.config.apiKey = 'HZSuvuqqj8jaEaezINQj';
+
+        const map = new maptilersdk.Map({
+            container: 'map', // container's id or the HTML element to render the map
+            style: maptilersdk.MapStyle.STREETS,
+            center: [14.42156, 40.81018], // starting position [lng, lat]
+            zoom: 9.4, // starting zoom
+        });
+
+        document.querySelector('.mapstyles-select').addEventListener('change', (e) => {
+            const style_code = e.target.value.split(".");
+            style_code.length === 2 ?
+            map.setStyle(maptilersdk.MapStyle[style_code[0]][style_code[1]]) :
+            map.setStyle(maptilersdk.MapStyle[style_code[0]] || style_code[0]);
+        });
+
+        const gc = new maptilersdkMaptilerGeocoder.GeocodingControl({});
+        map.addControl(gc, 'top-left');
+    </script>
+</body>
+
+</html>

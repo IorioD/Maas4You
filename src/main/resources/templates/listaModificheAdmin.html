@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src https://*;  style-src https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css;	 " />
+    <title>MaaS4You</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="bg-secondary text-white">
+    <div th:replace="template :: navbar">...</div>
+    <br>
+    <h1 class="text-center">Lista Richieste Modifica </h1>
+    <hr>
+    <div class="container my-2">
+        <!-- Refresh Button -->
+        <a th:href="@{/listaModificheAdmin}" class="btn btn-primary float-right">&#8634</a>
+    </div>
+    <br><br>
+    <div class="container my-2">
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Tratta
+                    </th>
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Descrizione
+                    </th>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Tratta
+                    </th>
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Descrizione
+                    </th>
+                    <th>Actions
+
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="modificaViaggio: ${lista_modifiche}">
+                    <td  th:text="${modificaViaggio.id_modifica}">
+                    <td  th:text="${modificaViaggio.tratta_modifica}">
+                    <td  th:text="${modificaViaggio.data_modifica}">
+                    <td  th:text="${modificaViaggio.descrizione_modifica}">
+                    <td class="bg-info" th:text="${modificaViaggio.id_viaggio}">
+                    <td class="bg-info" th:text="${modificaViaggio.tratta_viaggio}">
+                    <td class="bg-info" th:text="${modificaViaggio.data_viaggio}">
+                    <td class="bg-info" th:text="${modificaViaggio.descrizione_viaggio}">
+                </tr>
+            </tbody>
+        </table>
+    </div>  
+</div>
+</body>
+
+</html>
