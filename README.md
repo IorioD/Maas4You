@@ -14,21 +14,25 @@ This application uses the following technologies:
 5. OpenSSL as self certificate issuer
 6. Docker
 
-Application index and login (via keycloak) pages:
+The following Deployment diagram shows how the application is deployed with docker
+
+![Alt text](src/main/resources/templates/Deployment_Diagram.jpg "Deployment diagram")
+
+### 1. Application index and login (via keycloak) pages:
 
 ![Alt text](src/main/resources/templates/01_Index.png "Index")
 
 ![Alt text](src/main/resources/templates/02_Login.png "Login")
 
-Terms and conditions are displayed after login (with opt-in and out choices):
+### 2. Terms and conditions are displayed after login (with opt-in and out choices):
 
 ![Alt text](src/main/resources/templates/03_Terms.png "Terms")
 
-Main page with interactive map:
+### 3. Main page with interactive map:
 
 ![Alt text](src/main/resources/templates/Home.png "Home")
 
-User Trip list with add, delete and edit functions:
+### 4. User Trip list with add, delete and edit functions:
 
 ![Alt text](src/main/resources/templates/04_Trips.png "User Trips")
 
@@ -38,6 +42,6 @@ User Trip list with add, delete and edit functions:
 
 The cost of the trip is automatically evaluated by the app once the user provides the mean of transport that intends to use.
 
-In the end, the admin can have a full overview of the trips planned:
+### 5. The admin can have a full overview of the trips planned:
 
 ![Alt text](src/main/resources/templates/06_AdminSummary.png "Admin Summary")
