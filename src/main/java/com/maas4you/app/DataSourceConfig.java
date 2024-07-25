@@ -21,7 +21,7 @@ public class DataSourceConfig {
     public DataSource datasource() throws URISyntaxException {
 
         VaultTemplate vaultTemplate = new VaultTemplate( VaultEndpoint.from(new URI("http://vault:8200")),
-        new TokenAuthentication("hvs.91GMEQ5VcVjNxL4GnDq7hW7t"));
+        new TokenAuthentication(""));// <- Insert your Vault token here to connect to the endpoint
         Secret secret = new Secret();
         VaultResponseSupport<Secret> response = vaultTemplate.read("secret/myapp", Secret.class);
         
