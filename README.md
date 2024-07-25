@@ -16,6 +16,6 @@ This application uses the following technologies:
 
 Main page with interactive map:
 
-![Alt text](src/main/resources/templates/Home.jpg "Home")
+![Alt text](src/main/resources/templates/Home.png "Home")
 
 Roles
