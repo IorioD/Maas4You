@@ -24,6 +24,6 @@ public class VaultConfig extends AbstractVaultConfiguration {
      */
     @Override
     public ClientAuthentication clientAuthentication() {
-        return new TokenAuthentication("");// <- Insert your Vault token here                   
+        return new TokenAuthentication("token");// <- Insert your Vault token here                   
     }
 }
