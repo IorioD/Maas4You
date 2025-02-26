@@ -18,10 +18,10 @@ The following Deployment diagram shows how the application is deployed with dock
 
 ![Alt text](src/main/resources/templates/Deployment_Diagram.jpg "Deployment diagram")
 
-After the docker-compose has been completed, it is possible to execute the command “docker-compose up” to create the containers as follows:
-1. All containers start except “maas4you” and "maas4you_proxy" because the application depends on the secret contained in Vault and the proxy depends on the application itself.
+After the docker-compose has been completed, it is possible to execute the command `docker-compose up` to create the containers as follows:
+1. All containers start except `maas4you` and `maas4you_proxy` because the application depends on the secret contained in Vault and the proxy depends on the application itself.
 2. Visit the address https://localhost:9443/vault to unseal the vault with the three keys fragment and the token.
-3. The “maas4you” and "maas4you_proxy" containers can be started correctly.
+3. The `maas4you` and `maas4you_proxy` containers can be started correctly.
 4. If it’s the FIRST START, visit https://localhost:8443/auth to configure the application's Keycloak realm.
 5. Visit https://localhost:8443/maas4you to access the application.
 6. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
