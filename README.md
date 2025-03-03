@@ -1,8 +1,8 @@
 # Maas4You
- JAVA application to show a possible implementation of a management system for smart mobility following MaaS approach.
-The application is a Client-Server witn an MVC for the architecture and a DTO for data transfer.
+JAVA application to show a possible implementation of a security layer for a management system for smart mobility following MaaS approach.
+The application is a Client-Server witn an MVC for the architecture and a DTO for data transfer. Everything is containerized using Docker.
 
-The following Use Case diagram shows users and implemented iteractions.
+The following Use Case diagram describes users and implemented iteractions.
 
 ![Alt text](src/main/resources/templates/Use_Case.jpg "UC diagram")
 
@@ -25,6 +25,17 @@ After the docker-compose has been completed, it is possible to execute the comma
 4. If it’s the FIRST START, visit https://localhost:8443/auth to configure the application's Keycloak realm.
 5. Visit https://localhost:8443/maas4you to access the application.
 6. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
+
+Demo images are available on Dockerhub:
+
+- `iori0d/keycloak_database_cont`: manages users and admin registered in Keycoak
+- `iori0d/maas4you_keycloak_cont`: IAM used to access the application
+- `iori0d/maas4you_vault_cont`: Vault securing application database access data to
+- `iori0d/vault_proxy_cont`: proxy used to securely access vault via https
+- `iori0d/maas4you_database_cont`: database of trips inserted via the application
+- `iori0d/maas4you_proxy_cont`: proxy used to securely access application via https
+- `iori0d/maas4you_cont`: application itself
+- `iori0d/admin_mailhog_cont`: mockup mail server used to verify the keycloak admin account
 
 ### 1. Application index and login (via keycloak) pages:
 
