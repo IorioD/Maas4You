@@ -1,0 +1,43 @@
+
+-----------------------VAULT----------------------
+keys
+a5gYb5PTNXuAG7mNH3566eSquilyQ2B9KhZFvYFlv9WP
+XYVzH2pRDI6jvEpNQRvZP/nMNFxBRu9zA/txJb1u7miK
+UTgi0u9sd0j1j/7/FN7FsosKT3wf4FGOsRiEZML0k9yy
++T7cRJLOvWKNh+/d4UaTLfODK+vL6PY8iqfuLLATf+Kc
+
+
+Token
+hvs.91GMEQ5VcVjNxL4GnDq7hW7t
+
+-----------------------KEYCLOAK-------------------
+----------------Admin Access
+user admin
+psw admin
+----------------USERS
+M1234
+Bruno
+test.reticalcolate1@gmail.com
+
+ADMIN
+
+temp  gino
+perm  1234/Po
+----------------------
+M5678
+Peppe
+money.tracks@outlook.com
+
+USER
+
+temp  gino
+perm  5678/Op
+----------------------
+SimoS
+Simone Rossi
+maas4you.1@gmail.com
+
+USER
+
+temp gino
+perm 3456(Io
