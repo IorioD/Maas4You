@@ -26,7 +26,7 @@ After the docker-compose has been completed, it is possible to execute the comma
 5. Visit https://localhost:8443/maas4you to access the application.
 6. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
 
-Demo images are available on Dockerhub:
+Demo images are available on Dockerhub (access info are in [this file](Access.txt)):
 
 - `iori0d/keycloak_database_cont`: manages users and admin registered in Keycoak
 - `iori0d/maas4you_keycloak_cont`: IAM used to access the application
