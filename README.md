@@ -14,7 +14,7 @@ This application uses the following technologies:
 5. OpenSSL as self certificate issuer
 6. Docker
 
-The following images describe the system model realized with [Microsoft Threat Modeling Tool]([https://kubesphere.io/docs/v3.4/installing-on-linux/introduction/multioverview/](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool)) and the Deployment diagram of how the application is deployed with docker.
+The following images describe the system model realized with [Microsoft Threat Modeling Tool](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool) and the Deployment diagram of how the application is deployed with docker.
 
 ![Alt text](src/main/resources/templates/m4y.png "M4Y")
 
