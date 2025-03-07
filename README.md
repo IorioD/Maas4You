@@ -2,11 +2,9 @@
 JAVA application to show a possible implementation of a security layer for a management system for smart mobility following MaaS approach.
 The application is a Client-Server witn an MVC for the architecture and a DTO for data transfer. Everything is containerized using Docker.
 
-The following images describe the Use Case diagram for users and implemented iteractions and the system model realized with [Microsoft Threat Modeling Tool]([https://kubesphere.io/docs/v3.4/installing-on-linux/introduction/multioverview/](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool)).
+The following image describes the Use Case diagram for users and implemented iteractions.
 
 ![Alt text](src/main/resources/templates/Use_Case.jpg "UC diagram")
-
-![Alt text](src/main/resources/templates/m4y.png "M4Y")
 
 This application uses the following technologies:
 1. JAVA SpringBoot Framework
@@ -16,7 +14,9 @@ This application uses the following technologies:
 5. OpenSSL as self certificate issuer
 6. Docker
 
-The following Deployment diagram shows how the application is deployed with docker
+The following images describe the system model realized with [Microsoft Threat Modeling Tool]([https://kubesphere.io/docs/v3.4/installing-on-linux/introduction/multioverview/](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool)) and the Deployment diagram of how the application is deployed with docker.
+
+![Alt text](src/main/resources/templates/m4y.png "M4Y")
 
 ![Alt text](src/main/resources/templates/Deployment_Diagram.jpg "Deployment diagram")
 
