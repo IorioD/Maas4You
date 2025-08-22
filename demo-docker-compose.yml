@@ -1,0 +1,140 @@
+#version: "3.8"
+
+services:
+#------------------------------------------applicazione maas4you
+  app: 
+    image: iori0d/maas4you_cont:latest
+    container_name: maas4you
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    depends_on:
+      db:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+    networks:
+      - local-app
+
+#------------------------------------------database business logic
+  db:
+    image: iori0d/maas4you_database_cont:latest
+    container_name: maas4you_database
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_DATABASE=ssd_app
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=1234
+    healthcheck:
+      test: "exit 0"
+    networks:
+      - local-app
+
+#------------------------------------------database keycloak
+  postgres: 
+    image: iori0d/keycloak_database_cont:latest
+    container_name: keycloak_database
+    restart: always
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    networks:
+      - local-keycloak
+
+#------------------------------------------istanza keycloak
+  keycloak:
+    image: iori0d/maas4you_keycloak_cont:latest
+    container_name: maas4you_keycloak
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      PROXY_ADDRESS_FORWARDING: true
+    networks:
+      - local-keycloak
+      - local-app
+
+#------------------------------------------istanza mailhog
+  mailhog:
+    image: iori0d/admin_mailhog_cont:latest
+    container_name: admin_mailhog
+    restart: always
+    ports:
+      - 587:587
+      - 8025:8025
+    networks:
+      - local-keycloak
+
+#------------------------------------------vault
+  vault:
+    image: iori0d/maas4you_vault_cont:latest
+    container_name: maas4you_vault
+    ports:
+      - "8200:8200"
+    restart: always
+    volumes:
+      - ./docker/vault/volumes/logs:/vault/logs
+      - ./docker/vault/volumes/file:/vault/file
+      - ./docker/vault/volumes/config:/vault/config
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.json
+    healthcheck:
+      test: ["CMD", "curl http://vault:8200/v1/sys/seal-status || exit 0"]
+      interval: 30s
+      timeout: 5s
+      retries: 15
+      start_period: 10s
+    networks:
+      - local-app
+
+#------------------------------------------nginx-KC-APP
+  proxy-base:
+    image: iori0d/maas4you_proxy_cont:latest
+    container_name: maas4you_proxy
+    ports:
+      - 8443:8443
+      - 80:80
+    restart: always
+    depends_on:
+      - app
+    volumes:
+      - ./docker/proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/proxy/certs/mtCrt.crt:/etc/nginx/certs/mtCrt.crt
+      - ./docker/proxy/certs/mtKey.key:/etc/nginx/certs/mtKey.key
+    networks:
+      - local-app
+
+#------------------------------------------nginx-VAULT
+  proxy-vault:
+    image: iori0d/vault_proxy_cont:latest
+    container_name: vault_proxy
+    ports:
+      - 9443:9443
+    restart: always
+    depends_on:
+      - vault
+    volumes:
+      - ./docker/proxy/nginx_vault.conf:/etc/nginx/nginx.conf
+      - ./docker/proxy/certs/mtCrt.crt:/etc/nginx/certs/mtCrt.crt
+      - ./docker/proxy/certs/mtKey.key:/etc/nginx/certs/mtKey.key
+    networks:
+      - local-app
+
+#------------------------------------------networks
+networks:
+  local-keycloak: #connessione kc-postges
+  local-app: #connessione app-keycloak-vault-db
