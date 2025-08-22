@@ -20,7 +20,17 @@ The following images describe the system model realized with [Microsoft Threat M
 
 ![Alt text](src/main/resources/templates/Deployment_Diagram.jpg "Deployment diagram")
 
-After the docker-compose has been completed, it is possible to execute the command `docker-compose up` to create the containers as follows:
+To test yourself the application, Demo images are available on Dockerhub (access info are in [this file](Access.txt)):
+- `iori0d/keycloak_database_cont`: manages users and admin registered in Keycoak
+- `iori0d/maas4you_keycloak_cont`: IAM used to access the application
+- `iori0d/maas4you_vault_cont`: Vault securing application database access data to
+- `iori0d/vault_proxy_cont`: proxy used to securely access vault via https
+- `iori0d/maas4you_database_cont`: database of trips inserted via the application
+- `iori0d/maas4you_proxy_cont`: proxy used to securely access application via https
+- `iori0d/maas4you_cont`: application itself
+- `iori0d/admin_mailhog_cont`: mockup mail server used to verify the keycloak admin account
+
+After downloading the images, execute the command `demo-docker-compose up` to create the containers as follows:
 1. All containers start except `maas4you` and `maas4you_proxy` because the application depends on the secret contained in Vault and the proxy depends on the application itself.
 2. Visit the address https://localhost:9443/vault to unseal the vault with the three keys fragment and the token.
 3. The `maas4you` and `maas4you_proxy` containers can be started correctly.
@@ -30,17 +40,6 @@ After the docker-compose has been completed, it is possible to execute the comma
 7. Visit the users menu to create the users (with eventual required actions like "configure OTP", "Verify Email", "Update password", etc.).
 8. Visit https://localhost:8443/maas4you to access the application.
 9. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
-
-Demo images are available on Dockerhub (access info are in [this file](Access.txt)):
-
-- `iori0d/keycloak_database_cont`: manages users and admin registered in Keycoak
-- `iori0d/maas4you_keycloak_cont`: IAM used to access the application
-- `iori0d/maas4you_vault_cont`: Vault securing application database access data to
-- `iori0d/vault_proxy_cont`: proxy used to securely access vault via https
-- `iori0d/maas4you_database_cont`: database of trips inserted via the application
-- `iori0d/maas4you_proxy_cont`: proxy used to securely access application via https
-- `iori0d/maas4you_cont`: application itself
-- `iori0d/admin_mailhog_cont`: mockup mail server used to verify the keycloak admin account
 
 ### 1. Application index and login (via keycloak) pages:
 
