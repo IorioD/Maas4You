@@ -37,9 +37,9 @@ After downloading the images, execute the command `demo-docker-compose up` to cr
 4. If it’s NOT THE FIRST START, skip to step 8 else:
 5. Visit https://localhost:8443/auth and access to the Keycloak admin console.
 6. Create a new realm importing the [JSON file](M4Y-realm.json).
-7. Visit the users menu to create the users (with eventual required actions like "configure OTP", "Verify Email", "Update password", etc.).
+7. Visit "Users" menu to create the application users (with eventual required actions like "configure OTP", "Verify Email", "Update password", etc.) with USER or ADMIN role.
 8. Visit https://localhost:8443/maas4you to access the application.
-9. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
+9. Visit http://localhost:8025/ to access MailHog UI (it is used to send the verification emails to the new registered users).
 
 ### 1. Application index and login (via keycloak) pages:
 
