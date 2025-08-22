@@ -14,7 +14,7 @@ hvs.91GMEQ5VcVjNxL4GnDq7hW7t
 ----------------Admin Access
 user admin
 psw admin
-----------------USERS
+----------------USERS TO POPULATE THE DATABASE
 M1234
 Bruno
 test.reticalcolate1@gmail.com
@@ -32,7 +32,7 @@ USER
 
 temp  gino
 perm  5678/Op
-----------------------
+----------------------These last users have been created to test the OTP authentication
 SimoS
 Simone Rossi
 maas4you.1@gmail.com
@@ -41,3 +41,13 @@ USER
 
 temp gino
 perm 3456(Io
+----------------------
+Simo
+Simone Rossi
+maas4you.1@gmail.com
+
+USER
+
+temp gino
+perm 3456(Io
+
