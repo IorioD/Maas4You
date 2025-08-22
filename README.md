@@ -24,9 +24,12 @@ After the docker-compose has been completed, it is possible to execute the comma
 1. All containers start except `maas4you` and `maas4you_proxy` because the application depends on the secret contained in Vault and the proxy depends on the application itself.
 2. Visit the address https://localhost:9443/vault to unseal the vault with the three keys fragment and the token.
 3. The `maas4you` and `maas4you_proxy` containers can be started correctly.
-4. If it’s the FIRST START, visit https://localhost:8443/auth to configure the application's Keycloak realm.
-5. Visit https://localhost:8443/maas4you to access the application.
-6. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
+4. If it’s NOT THE FIRST START, skip to step 8 else:
+5. Visit https://localhost:8443/auth and access to the Keycloak admin console.
+6. Create a new realm importing the [JSON file](M4Y-realm.json).
+7. Visit the users menu to create the users (with eventual required actions like "configure OTP", "Verify Email", "Update password", etc.).
+8. Visit https://localhost:8443/maas4you to access the application.
+9. To visit the MailHog page and interact with its UI, visit http://localhost:8025/
 
 Demo images are available on Dockerhub (access info are in [this file](Access.txt)):
 
