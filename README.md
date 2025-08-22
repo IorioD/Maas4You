@@ -20,7 +20,7 @@ The following images describe the system model realized with [Microsoft Threat M
 
 ![Alt text](src/main/resources/templates/Deployment_Diagram.jpg "Deployment diagram")
 
-To test yourself the application, Demo images are available on Dockerhub (access info are in [this file](Access.txt)):
+To test yourself the application, first of all you need to modify your "hosts" file (C:\Windows\System32\drivers\etc in windows /etc/hosts in Linux) and add `127.0.0.1	keycloak` (Be careful to add a TAB between the IP and the service name). After that, demo images are available on Dockerhub (access info are in [this file](Access.txt)):
 - `iori0d/keycloak_database_cont`: manages users and admin registered in Keycoak
 - `iori0d/maas4you_keycloak_cont`: IAM used to access the application
 - `iori0d/maas4you_vault_cont`: Vault securing application database access data to
