@@ -30,7 +30,7 @@ To test yourself the application, first of all you need to modify your "hosts" f
 - `iori0d/maas4you_cont`: application itself
 - `iori0d/admin_mailhog_cont`: mockup mail server used to verify the keycloak admin account
 
-After downloading the images, execute the command `demo-docker-compose up` to create the containers as follows (if ypu use `docker-compose up` you need to configure from scratch the Vault environmet with access tokens and secrets to acces the application DB):
+After downloading the images, execute the command `demo-docker-compose up` to create the containers as follows (if you use `docker-compose up` you need to configure from scratch the Vault environmet with access tokens and secrets to acces the application DB):
 1. All containers start except `maas4you` and `maas4you_proxy` because the application depends on the secret contained in Vault and the proxy depends on the application itself.
 2. Visit the address https://localhost:9443/vault to unseal the vault with the three keys fragment and the token.
 3. The `maas4you` and `maas4you_proxy` containers can be started correctly.
