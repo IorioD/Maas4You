@@ -68,3 +68,8 @@ The cost of the trip is automatically evaluated by the app once the user provide
 ### 5. The admin can have a full overview of the trips planned:
 
 ![Alt text](src/main/resources/templates/06_AdminSummary.png "Admin Summary")
+
+---
+## Reference
+[1] V. Casola and D. Iorio, "Mobility as a Service (MaaS) Applications: A Reference Security Architecture," 2025 9th International Conference on Models and Technologies for Intelligent Transportation Systems (MT-ITS), Luxembourg, Luxembourg, 2025, pp. 1-6, [DOI](https://doi.org/10.1109/MT-ITS68460.2025.11223551) 
+
