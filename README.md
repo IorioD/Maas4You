@@ -1,6 +1,8 @@
 # Maas4You
-JAVA application to show a possible implementation of a security layer for a management system for smart mobility following MaaS approach.
-The application is a Client-Server witn an MVC for the architecture and a DTO for data transfer. Everything is containerized using Docker.
+JAVA application to show a possible implementation of a security layer for a management system for smart mobility following the MaaS approach.
+The application is a Client-Server with an MVC for the architecture and a DTO for data transfer. Everything is containerized using Docker.
+
+[Powerpoint](./MT-ITS%202025.pdf)
 
 The following image describes the Use Case diagram for users and implemented iteractions.
 
