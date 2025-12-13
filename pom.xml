@@ -12,7 +12,12 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>maas4you</name>
-	<description>Demo project for MaaS4You</description>
+	<description>
+		Demo project for a secure MaaS application.
+		V. Casola and D. Iorio, "Mobility as a Service (MaaS) Applications: A Reference Security Architecture," 
+		2025 9th International Conference on Models and Technologies for Intelligent Transportation Systems (MT-ITS), Luxembourg, Luxembourg, 2025, pp. 1-6, 
+		DOI: 10.1109/MT-ITS68460.2025.11223551
+	</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.4</spring-cloud.version>
